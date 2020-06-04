@@ -1,0 +1,59 @@
+ROTA: Endereço completo da requisição
+RECURSO: Qual entidade estamos acessando do sistema
+
+JSON para enviar a resposta em JS
+Return para finalizar a rota
+
+GET: Buscar uma ou mais informações no back-end
+POST: Criar uma nova informação no back-end
+PUT: Atualizar uma informação no back-end
+DELETE: Remover uma informação do back-end
+
+Request Param: Parâmetro que vem na própria rota que identificam um recurso
+Query Param: Parâmetro que vem na própria rota geralmente opcionais (filtros, paginação)
+Request Body: Parâmetro para criação/atualização de informações
+
+SELECT * FROM users WHERE name = 'Laurinne'
+knex('users').where('name', 'Laurinne').select('*')
+
+Entidades:
+    Pontos de coleta
+        Name
+        Email   
+        Whatsapp
+        Image
+        latitude
+        longitude
+        city
+        UF
+
+    Itens de coleta
+        titulo
+        image
+
+    points_items
+    ( Relacionamento do item - ponto de coleta ) ( N - N ) (Pivot)
+        item_id
+        point_id
+
+
+Usuário:
+Nome
+Email
+Endereço
+Telefone
+
+Migrations = Histórico do banco de dados
+    criar tabelas
+    editar tabelas
+    remover tabelas
+
+Funcionalidades da aplicação:
+    Cadastro de ponto de coleta
+    Listar os itens de coleta
+    Listar pontos ( filtro por estado/cidade/itens )
+    Listar umponto de coleta especifico
+
+CORS:
+    DEFINE NA API QUAIS ENDEREÇOS INTERNOS IRÃO TER ACESSO A APLICAÇÃO.
+    Define quais URL web irão ter acesso a API.
