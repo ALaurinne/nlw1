@@ -57,3 +57,7 @@ Funcionalidades da aplicação:
 CORS:
     DEFINE NA API QUAIS ENDEREÇOS INTERNOS IRÃO TER ACESSO A APLICAÇÃO.
     Define quais URL web irão ter acesso a API.
+
+React é uma biblioteca pelo JS, a inferface é montada apartir do JS. 
+
+JSX: Poder escrever HTML dentro do proprio JS. Sintaxe de XML dentro do JS.
