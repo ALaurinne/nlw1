@@ -10,6 +10,7 @@ import axios from 'axios';
 import Modal from '@material-ui/core/Modal';
 import { LeafletMouseEvent } from 'leaflet';
 import path from 'path';
+import Dropzone from '../../components/Dropzone';
 // Aproveitar elementos semanticos do HTML
 
 const CreatePoint = () => {
@@ -45,6 +46,7 @@ const CreatePoint = () => {
     const [selectedItems, setSelectedItems] = useState<number[]>([]);
     const history = useHistory();
     const [open, setOpen] = useState(false);
+    const [selectedFile, setSelectedFile] = useState<File>();
     
 
     //Executa a função sempre que variavel muda, em vazio, executa apenas uma vez, quando o componente aparecer em tela
@@ -119,23 +121,26 @@ const CreatePoint = () => {
 
     async function handleSubmit(event: FormEvent){
         event.preventDefault();
-
-        
+      
         const { name, email, whatsapp } = formData;
         const uf = selectedUF;
         const city = selectedCity;
         const [lagitude, longitude] = selectedPosition;
         const items = selectedItems;
-        const data = {
-            name,
-            email,
-            whatsapp,
-            lagitude,
-            longitude,
-            city,
-            uf,
-            items,
-        }
+        const data = new FormData();
+        
+            data.append('name', name);
+            data.append('email', email);
+            data.append('whatsapp', whatsapp);
+            data.append('lagitude', String(lagitude));
+            data.append('longitude', String(longitude));
+            data.append('city', city);
+            data.append('uf', uf);
+            data.append('items', items.join(','));
+            
+            if (selectedFile){
+                data.append('image', selectedFile);
+            }
 
         // criando no banco de dados
         await api.post('points', data);
@@ -178,6 +183,8 @@ const CreatePoint = () => {
             <form onSubmit={handleSubmit}>
                 <h1>Cadastro do<br />ponto de coleta</h1>
                 
+                <Dropzone onFileUploaded={setSelectedFile}/>
+
                 <fieldset>
                     <legend>
                         <h2>Dados</h2>
