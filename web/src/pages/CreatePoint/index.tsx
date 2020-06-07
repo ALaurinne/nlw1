@@ -190,6 +190,7 @@ const CreatePoint = () => {
                             name="name"
                             id="name"
                             onChange={handleInputChange}
+                            placeholder="Nome do ponto de coleta"
                         />
                     </div>
                     <div className="field-group">
@@ -200,6 +201,7 @@ const CreatePoint = () => {
                                 name="email"
                                 id="email"
                                 onChange={handleInputChange}
+                                placeholder="Email"
                             />
                         </div>
                         <div className="field">
@@ -209,6 +211,7 @@ const CreatePoint = () => {
                                 name="whatsapp"
                                 id="whatsapp"
                                 onChange={handleInputChange}
+                                placeholder="+XX XX XXXXX-XXXX"
                             />
                         </div>
                     </div>
